@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz del Camarero</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+            transition: background-color 0.5s ease;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        #currentWaiter {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        #currentServing {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: center;
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        #nextCustomer, #goToEditor, #logout {
+            display: block;
+            margin: 20px auto;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        #goToEditor {
+            background-color: #e74c3c;
+        }
+
+        #logout {
+            background-color: #34495e;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        #queueStatus {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .queue-item {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 15px;
+            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .highlight {
+            animation: highlight 1s ease;
+        }
+
+        @keyframes highlight {
+            0%, 100% { background-color: transparent; }
+            50% { background-color: #f1c40f; }
+        }
+
+        .history-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #datePicker {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        #getHistoryBtn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #getHistoryBtn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interfaz del Camarero</h1>
+    <div id="currentWaiter"></div>
+    <div id="currentServing">Atendiendo: -</div>
+    <button id="nextCustomer">Siguiente Cliente</button>
+    <button id="goToEditor">Ir al Editor de Carta</button>
+    <button id="logout">Cerrar Sesión</button>
+    <div id="queueStatus"></div>
+    <div class="history-controls">
+        <h2>Historial Diario</h2>
+        <input type="date" id="datePicker">
+        <button id="getHistoryBtn">Consultar Historial</button>
+    </div>
+    <table id="history">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Mesa</th>
+                <th>Camarero</th>
+                <th>Hora</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        const socket = new WebSocket(`ws://${window.location.hostname}:8080`);
+        const nextButton = document.getElementById('nextCustomer');
+        const goToEditorButton = document.getElementById('goToEditor');
+        const logoutButton = document.getElementById('logout');
+        const currentWaiterDisplay = document.getElementById('currentWaiter');
+        const currentServingDisplay = document.getElementById('currentServing');
+        const queueStatusDisplay = document.getElementById('queueStatus');
+        const historyTable = document.getElementById('history');
+        const datePicker = document.getElementById('datePicker');
+        const getHistoryBtn = document.getElementById('getHistoryBtn');
+        let historyData = [];
+        let currentWaiter = '';
+
+        // Obtener el nombre del camarero de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        currentWaiter = urlParams.get('name');
+
+        if (currentWaiter) {
+            currentWaiterDisplay.textContent = `Camarero actual: ${currentWaiter}`;
+        } else {
+            window.location.href = '/login'; // Redirigir al login si no hay nombre de camarero
+        }
+
+        nextButton.addEventListener('click', () => {
+            socket.send(JSON.stringify({ type: 'next', waiter: currentWaiter }));
+            document.body.classList.add('highlight');
+            setTimeout(() => {
+                document.body.classList.remove('highlight');
+            }, 1000);
+        });
+
+        goToEditorButton.addEventListener('click', () => {
+            window.location.href = '/editor';
+        });
+
+        logoutButton.addEventListener('click', () => {
+            window.location.href = '/login';
+        });
+
+        getHistoryBtn.addEventListener('click', () => {
+            const selectedDate = datePicker.value;
+            if (selectedDate) {
+                socket.send(JSON.stringify({ type: 'getHistory', date: selectedDate }));
+            } else {
+                alert('Por favor, seleccione una fecha');
+            }
+        });
+
+        socket.onopen = function() {
+            const today = new Date().toISOString().split('T')[0];
+            datePicker.value = today;
+            socket.send(JSON.stringify({ type: 'getHistory', date: today }));
+        };
+
+        socket.onmessage = function(event) {
+            console.log('Mensaje recibido:', event.data);
+            const message = JSON.parse(event.data);
+            switch(message.type) {
+                case 'queueUpdate':
+                    updateQueueDisplay(message.status);
+                    break;
+                case 'history':
+                    console.log('Datos de historial recibidos:', message.data);
+                    historyData = message.data;
+                    updateHistory(historyData);
+                    break;
+                case 'historyUpdate':
+                    console.log('Actualización de historial recibida:', message.data);
+                    if (datePicker.value === new Date().toISOString().split('T')[0]) {
+                        historyData.unshift(message.data);
+                        updateHistory(historyData);
+                    }
+                    break;
+            }
+        };
+
+        function updateQueueDisplay(status) {
+            currentServingDisplay.textContent = `Atendiendo: Mesa ${status.currentServing.table || '-'} (Ticket ${status.currentServing.number || '-'})`;
+            currentServingDisplay.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                currentServingDisplay.style.transform = 'scale(1)';
+            }, 300);
+
+            queueStatusDisplay.innerHTML = 'Cola actual: ';
+            status.queue.forEach((client, index) => {
+                setTimeout(() => {
+                    const span = document.createElement('span');
+                    span.className = 'queue-item';
+                    span.textContent = `Mesa ${client.table} (${client.number})`;
+                    queueStatusDisplay.appendChild(span);
+                }, index * 100);
+            });
+
+            queueStatusDisplay.style.opacity = '1';
+        }
+
+        function updateHistory(data) {
+            console.log('Actualizando historial con datos:', data);
+            const tbody = historyTable.getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+            data.forEach((item, index) => {
+                const row = tbody.insertRow();
+                row.style.opacity = '0';
+                row.style.transform = 'translateY(20px)';
+                row.insertCell(0).textContent = item.number;
+                row.insertCell(1).textContent = item.table;
+                row.insertCell(2).textContent = item.waiter || '-';
+                row.insertCell(3).textContent = new Date(item.time).toLocaleTimeString();
+                setTimeout(() => {
+                    row.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    row.style.opacity = '1';
+                    row.style.transform = 'translateY(0)';
+                }, 50 * index);
+            });
+        }
+
+        socket.onerror = function(error) {
+            console.error('Error de WebSocket:', error);
+        };
+
+        socket.onclose = function(event) {
+            console.log('Conexión WebSocket cerrada:', event);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso al Sistema de Gestión de Restaurante</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .auth-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #error-message {
+            color: #e74c3c;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <h1>Acceso al Sistema de Gestión de Restaurante</h1>
+        <input type="password" id="restaurant-password" placeholder="Contraseña del restaurante">
+        <button id="login-button">Acceder</button>
+        <div id="error-message"></div>
+    </div>
+
+    <script>
+        const loginButton = document.getElementById('login-button');
+        const passwordInput = document.getElementById('restaurant-password');
+        const errorMessage = document.getElementById('error-message');
+
+        loginButton.addEventListener('click', () => {
+            const password = passwordInput.value;
+            // Aquí deberías hacer una llamada al servidor para verificar la contraseña
+            // Por ahora, usaremos una contraseña de ejemplo
+            if (password === 'restaurante123') {
+                // Redirigir al login de camareros si la contraseña es correcta
+                window.location.href = '/login';
+            } else {
+                errorMessage.textContent = 'Contraseña incorrecta. Por favor, inténtelo de nuevo.';
+            }
+        });
+
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                loginButton.click();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,934 @@
+{
+  "2024-07-16": [
+    {
+      "number": 6,
+      "table": "6",
+      "waiter": "Alexandre",
+      "time": "2024-07-16T20:13:47.285Z"
+    },
+    {
+      "number": 5,
+      "table": "1",
+      "waiter": "Alexandre",
+      "time": "2024-07-16T20:13:28.151Z"
+    },
+    {
+      "number": 15,
+      "table": "6",
+      "waiter": "Julian",
+      "time": "2024-07-16T17:40:07.042Z"
+    },
+    {
+      "number": 12,
+      "table": "6",
+      "waiter": "Julian",
+      "time": "2024-07-16T17:39:23.141Z"
+    },
+    {
+      "number": 11,
+      "table": "3",
+      "waiter": "Julian",
+      "time": "2024-07-16T17:39:18.399Z"
+    },
+    {
+      "number": 10,
+      "table": "6",
+      "waiter": "Julian",
+      "time": "2024-07-16T17:39:12.259Z"
+    },
+    {
+      "number": 8,
+      "table": "3",
+      "waiter": "Julian",
+      "time": "2024-07-16T17:39:07.517Z"
+    },
+    {
+      "number": 7,
+      "table": "8",
+      "waiter": "Julian",
+      "time": "2024-07-16T17:36:23.392Z"
+    },
+    {
+      "number": 6,
+      "table": "3",
+      "waiter": "Julian",
+      "time": "2024-07-16T17:36:22.739Z"
+    },
+    {
+      "number": 3,
+      "table": "8",
+      "waiter": "Julian",
+      "time": "2024-07-16T17:35:45.184Z"
+    },
+    {
+      "number": 2,
+      "table": "3",
+      "waiter": "Julian",
+      "time": "2024-07-16T17:35:36.941Z"
+    },
+    {
+      "number": 51,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:39:25.172Z"
+    },
+    {
+      "number": 50,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:39:05.150Z"
+    },
+    {
+      "number": 49,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:39:00.494Z"
+    },
+    {
+      "number": 48,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:59.158Z"
+    },
+    {
+      "number": 47,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:56.741Z"
+    },
+    {
+      "number": 46,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:54.934Z"
+    },
+    {
+      "number": 45,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:50.857Z"
+    },
+    {
+      "number": 44,
+      "table": "11",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:47.381Z"
+    },
+    {
+      "number": 43,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:43.353Z"
+    },
+    {
+      "number": 42,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:41.556Z"
+    },
+    {
+      "number": 41,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:32.047Z"
+    },
+    {
+      "number": 40,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:30.474Z"
+    },
+    {
+      "number": 39,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:23.589Z"
+    },
+    {
+      "number": 38,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:22.313Z"
+    },
+    {
+      "number": 37,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:20.982Z"
+    },
+    {
+      "number": 36,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:19.222Z"
+    },
+    {
+      "number": 35,
+      "table": "11",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:18.486Z"
+    },
+    {
+      "number": 34,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:14.906Z"
+    },
+    {
+      "number": 33,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:10.934Z"
+    },
+    {
+      "number": 32,
+      "table": "11",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:10.582Z"
+    },
+    {
+      "number": 31,
+      "table": "11",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:08.168Z"
+    },
+    {
+      "number": 30,
+      "table": "11",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:04.635Z"
+    },
+    {
+      "number": 29,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:38:03.028Z"
+    },
+    {
+      "number": 20,
+      "table": "15",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:37:29.474Z"
+    },
+    {
+      "number": 19,
+      "table": "11",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:37:28.004Z"
+    },
+    {
+      "number": 17,
+      "table": "11",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:37:05.138Z"
+    },
+    {
+      "number": 16,
+      "table": "11",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:36:18.320Z"
+    },
+    {
+      "number": 15,
+      "table": "12",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:36:15.988Z"
+    },
+    {
+      "number": 14,
+      "table": "11",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:35:54.078Z"
+    },
+    {
+      "number": 13,
+      "table": "13",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:27:49.609Z"
+    },
+    {
+      "number": 12,
+      "table": "6",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:27:46.578Z"
+    },
+    {
+      "number": 11,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:27:43.416Z"
+    },
+    {
+      "number": 10,
+      "table": "13",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:27:31.843Z"
+    },
+    {
+      "number": 9,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:27:00.708Z"
+    },
+    {
+      "number": 4,
+      "table": "6",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:26:59.959Z"
+    },
+    {
+      "number": 2,
+      "table": "6",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:26:37.466Z"
+    },
+    {
+      "number": 1,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:26:34.889Z"
+    },
+    {
+      "number": 131,
+      "table": "23",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:23:49.466Z"
+    },
+    {
+      "number": 130,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:23:19.318Z"
+    },
+    {
+      "number": 128,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:23:08.817Z"
+    },
+    {
+      "number": 127,
+      "table": "6",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:23:07.477Z"
+    },
+    {
+      "number": 123,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:22:53.878Z"
+    },
+    {
+      "number": 120,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:21:42.180Z"
+    },
+    {
+      "number": 119,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:21:40.611Z"
+    },
+    {
+      "number": 118,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:21:38.175Z"
+    },
+    {
+      "number": 117,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:21:32.511Z"
+    },
+    {
+      "number": 116,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:20:45.897Z"
+    },
+    {
+      "number": 115,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:20:44.428Z"
+    },
+    {
+      "number": 114,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:20:43.280Z"
+    },
+    {
+      "number": 113,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:20:38.753Z"
+    },
+    {
+      "number": 112,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:20:36.955Z"
+    },
+    {
+      "number": 111,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:20:35.246Z"
+    },
+    {
+      "number": 110,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:20:18.155Z"
+    },
+    {
+      "number": 109,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:20:17.047Z"
+    },
+    {
+      "number": 108,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:20:16.130Z"
+    },
+    {
+      "number": 107,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:20:06.692Z"
+    },
+    {
+      "number": 106,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:20:01.342Z"
+    },
+    {
+      "number": 105,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:59.214Z"
+    },
+    {
+      "number": 103,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:58.309Z"
+    },
+    {
+      "number": 102,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:48.466Z"
+    },
+    {
+      "number": 101,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:47.675Z"
+    },
+    {
+      "number": 100,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:46.264Z"
+    },
+    {
+      "number": 99,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:44.159Z"
+    },
+    {
+      "number": 98,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:43.173Z"
+    },
+    {
+      "number": 97,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:42.224Z"
+    },
+    {
+      "number": 96,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:41.371Z"
+    },
+    {
+      "number": 95,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:40.600Z"
+    },
+    {
+      "number": 94,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:39.885Z"
+    },
+    {
+      "number": 93,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:39.000Z"
+    },
+    {
+      "number": 92,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:38.030Z"
+    },
+    {
+      "number": 91,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:36.638Z"
+    },
+    {
+      "number": 90,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:34.962Z"
+    },
+    {
+      "number": 89,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:33.398Z"
+    },
+    {
+      "number": 88,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:32.563Z"
+    },
+    {
+      "number": 87,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:31.147Z"
+    },
+    {
+      "number": 86,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:27.122Z"
+    },
+    {
+      "number": 85,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:26.216Z"
+    },
+    {
+      "number": 84,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:24.622Z"
+    },
+    {
+      "number": 83,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:18.913Z"
+    },
+    {
+      "number": 82,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:04.571Z"
+    },
+    {
+      "number": 81,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:03.106Z"
+    },
+    {
+      "number": 76,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:19:01.536Z"
+    },
+    {
+      "number": 75,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:18:50.823Z"
+    },
+    {
+      "number": 74,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:18:41.006Z"
+    },
+    {
+      "number": 73,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:18:37.537Z"
+    },
+    {
+      "number": 72,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:18:36.140Z"
+    },
+    {
+      "number": 71,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:18:33.860Z"
+    },
+    {
+      "number": 70,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:18:31.548Z"
+    },
+    {
+      "number": 69,
+      "table": "30",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:18:20.238Z"
+    },
+    {
+      "number": 68,
+      "table": "24",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:18:17.513Z"
+    },
+    {
+      "number": 65,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:18:15.709Z"
+    },
+    {
+      "number": 64,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:18:14.346Z"
+    },
+    {
+      "number": 63,
+      "table": "24",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:17:44.089Z"
+    },
+    {
+      "number": 62,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:17:42.150Z"
+    },
+    {
+      "number": 61,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:17:40.289Z"
+    },
+    {
+      "number": 60,
+      "table": "24",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:17:36.651Z"
+    },
+    {
+      "number": 58,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:17:34.281Z"
+    },
+    {
+      "number": 57,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:17:31.710Z"
+    },
+    {
+      "number": 56,
+      "table": "24",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:17:22.491Z"
+    },
+    {
+      "number": 55,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:17:19.618Z"
+    },
+    {
+      "number": 54,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:17:18.047Z"
+    },
+    {
+      "number": 53,
+      "table": "24",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:17:14.652Z"
+    },
+    {
+      "number": 52,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:17:12.810Z"
+    },
+    {
+      "number": 50,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:17:10.982Z"
+    },
+    {
+      "number": 48,
+      "table": "24",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:16:49.523Z"
+    },
+    {
+      "number": 47,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:16:47.902Z"
+    },
+    {
+      "number": 46,
+      "table": "1",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:16:46.824Z"
+    },
+    {
+      "number": 44,
+      "table": "5",
+      "waiter": "Julian",
+      "time": "2024-07-16T15:16:45.816Z"
+    },
+    {
+      "number": 43,
+      "table": "1",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:16:27.011Z"
+    },
+    {
+      "number": 42,
+      "table": "24",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:16:24.780Z"
+    },
+    {
+      "number": 41,
+      "table": "24",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:16:22.064Z"
+    },
+    {
+      "number": 40,
+      "table": "5",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:16:20.699Z"
+    },
+    {
+      "number": 39,
+      "table": "1",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:16:17.623Z"
+    },
+    {
+      "number": 38,
+      "table": "24",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:16:15.935Z"
+    },
+    {
+      "number": 37,
+      "table": "24",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:16:06.622Z"
+    },
+    {
+      "number": 36,
+      "table": "24",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:16:03.523Z"
+    },
+    {
+      "number": 35,
+      "table": "5",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:16:02.146Z"
+    },
+    {
+      "number": 34,
+      "table": "1",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:16:00.667Z"
+    },
+    {
+      "number": 33,
+      "table": "24",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:15:56.407Z"
+    },
+    {
+      "number": 32,
+      "table": "1",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:15:53.046Z"
+    },
+    {
+      "number": 31,
+      "table": "24",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:15:52.279Z"
+    },
+    {
+      "number": 30,
+      "table": "24",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:15:43.002Z"
+    },
+    {
+      "number": 29,
+      "table": "1",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:15:40.183Z"
+    },
+    {
+      "number": 28,
+      "table": "24",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:15:37.480Z"
+    },
+    {
+      "number": 27,
+      "table": "24",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:15:28.151Z"
+    },
+    {
+      "number": 26,
+      "table": "5",
+      "waiter": "Marta",
+      "time": "2024-07-16T15:15:26.831Z"
+    },
+    {
+      "number": 25,
+      "table": "1",
+      "waiter": "Jose",
+      "time": "2024-07-16T15:15:18.826Z"
+    },
+    {
+      "number": 24,
+      "table": "24",
+      "waiter": "Jose",
+      "time": "2024-07-16T15:15:08.279Z"
+    },
+    {
+      "number": 23,
+      "table": "24",
+      "waiter": "Jose",
+      "time": "2024-07-16T15:15:06.078Z"
+    },
+    {
+      "number": 22,
+      "table": "24",
+      "waiter": "Jose",
+      "time": "2024-07-16T15:14:57.340Z"
+    },
+    {
+      "number": 17,
+      "table": "1",
+      "waiter": "Jose",
+      "time": "2024-07-16T15:14:56.711Z"
+    },
+    {
+      "number": 16,
+      "table": "5",
+      "waiter": "Jose",
+      "time": "2024-07-16T15:14:54.114Z"
+    },
+    {
+      "number": 15,
+      "table": "1",
+      "waiter": "Jose",
+      "time": "2024-07-16T15:14:31.281Z"
+    },
+    {
+      "number": 13,
+      "table": "24",
+      "waiter": "Jose",
+      "time": "2024-07-16T15:14:27.668Z"
+    },
+    {
+      "number": 12,
+      "table": "1",
+      "waiter": "Jose",
+      "time": "2024-07-16T15:11:06.542Z"
+    },
+    {
+      "number": 11,
+      "table": "5",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:11:05.985Z"
+    },
+    {
+      "number": 10,
+      "table": "1",
+      "waiter": "Jose",
+      "time": "2024-07-16T15:11:03.453Z"
+    },
+    {
+      "number": 9,
+      "table": "1",
+      "waiter": "Huligan",
+      "time": "2024-07-16T15:10:23.931Z"
+    },
+    {
+      "number": 8,
+      "table": "5",
+      "waiter": "Huligan",
+      "time": "2024-07-16T15:10:22.086Z"
+    },
+    {
+      "number": 6,
+      "table": "5",
+      "waiter": "Huligan",
+      "time": "2024-07-16T15:10:15.910Z"
+    },
+    {
+      "number": 5,
+      "table": "1",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:10:14.519Z"
+    },
+    {
+      "number": 4,
+      "table": "5",
+      "waiter": "Huligan",
+      "time": "2024-07-16T15:10:11.366Z"
+    },
+    {
+      "number": 2,
+      "table": "1",
+      "waiter": "Camarero 2",
+      "time": "2024-07-16T15:09:54.670Z"
+    },
+    {
+      "number": 1,
+      "table": "5",
+      "waiter": "Huligan",
+      "time": "2024-07-16T15:09:53.746Z"
+    }
+  ]
+}

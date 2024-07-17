@@ -1,0 +1,67 @@
+{
+  "Entrantes": [
+    {
+      "name": "Ensalada César",
+      "price": "8.50€",
+      "description": "Maravillosa ensalada cesar con muchas calorias",
+      "image": "/uploads/adf40dcd2cf6c6c28dbbc3a4e9381e83.jpeg"
+    },
+    {
+      "name": "Croquetas de Jamón",
+      "price": "7.00€",
+      "image": "/uploads/4b98943cf44da00a08e9448f1a66cc2d.png"
+    },
+    {
+      "name": "Gazpacho Andaluz",
+      "price": "6.50€",
+      "image": "/uploads/fcc5f580d9dbb19ca61b5bd128ad5ef4.jpeg"
+    },
+    {
+      "name": "olivas",
+      "price": "2.00€",
+      "description": "ricas ricas",
+      "image": "/uploads/1b3a12a33fb19c41616deecba150cb97.png"
+    }
+  ],
+  "Platos Principales": [
+    {
+      "name": "Paella de Mariscos",
+      "price": "18.00€"
+    },
+    {
+      "name": "Solomillo a la Pimienta",
+      "price": "22.50€"
+    },
+    {
+      "name": "Lubina al Horno",
+      "price": "20.00€"
+    }
+  ],
+  "Postres": [
+    {
+      "name": "Tarta de Queso",
+      "price": "6.00€"
+    },
+    {
+      "name": "Crema Catalana",
+      "price": "5.50€",
+      "image": "/uploads/dbec51f7e02a880a91f625d2b632ab95.png"
+    },
+    {
+      "name": "Frutas del Bosque",
+      "price": "7.00€"
+    }
+  ],
+  "Bebidas": [
+    {
+      "name": "Cocacola",
+      "price": "2.00€"
+    }
+  ],
+  "Carta de vinos": [
+    {
+      "name": "Rioja",
+      "price": "10.00€"
+    }
+  ]
+}

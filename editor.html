@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Carta</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        #menuEditor {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .category {
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .dish {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .dish img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        input[type="text"], textarea {
+            padding: 5px;
+            border: 1px solid #bdc3c7;
+            border-radius: 3px;
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .remove {
+            background-color: #e74c3c;
+        }
+
+        .remove:hover {
+            background-color: #c0392b;
+        }
+
+        #addCategory, #goToWaiterLogin {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+
+        #goToWaiterLogin {
+            background-color: #2ecc71;
+        }
+
+        #goToWaiterLogin:hover {
+            background-color: #27ae60;
+        }
+
+        .image-upload {
+            display: none;
+        }
+
+        .loading {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        #statusMessage {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .success {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .error {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .info {
+            background-color: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Editor de Carta</h1>
+    <div id="menuEditor"></div>
+    <button id="addCategory">Añadir Nueva Categoría</button>
+    <button id="goToWaiterLogin">Ir a Inicio de Sesión de Camareros</button>
+    <div id="statusMessage"></div>
+
+    <script>
+        const socket = new WebSocket(`ws://${window.location.hostname}:8080`);
+        const menuEditor = document.getElementById('menuEditor');
+        const addCategoryButton = document.getElementById('addCategory');
+        const goToWaiterLoginButton = document.getElementById('goToWaiterLogin');
+        const statusMessage = document.getElementById('statusMessage');
+        let menu = {};
+
+        socket.onmessage = function(event) {
+            const message = JSON.parse(event.data);
+            if (message.type === 'menuUpdate') {
+                menu = message.menu;
+                renderMenu();
+            }
+        };
+
+        function renderMenu() {
+            menuEditor.innerHTML = '';
+            Object.keys(menu).forEach(categoryName => {
+                const categoryDiv = createCategoryElement(categoryName);
+                menu[categoryName].forEach(dish => {
+                    categoryDiv.appendChild(createDishElement(categoryName, dish));
+                });
+                menuEditor.appendChild(categoryDiv);
+            });
+        }
+
+        function createCategoryElement(categoryName) {
+            const categoryDiv = document.createElement('div');
+            categoryDiv.className = 'category';
+            categoryDiv.innerHTML = `
+                <div class="category-header">
+                    <input type="text" value="${categoryName}" onchange="updateCategoryName('${categoryName}', this.value)">
+                    <button class="remove" onclick="removeCategory('${categoryName}')">Eliminar Categoría</button>
+                </div>
+                <button onclick="addDish('${categoryName}')">Añadir Plato</button>
+            `;
+            return categoryDiv;
+        }
+
+        function createDishElement(categoryName, dish) {
+            const dishDiv = document.createElement('div');
+            dishDiv.className = 'dish';
+            dishDiv.innerHTML = `
+                <img src="${dish.image}" alt="${dish.name}" onerror="this.src='/uploads/default-dish.jpg'">
+                <div>
+                    <input type="text" value="${dish.name}" onchange="updateDish('${categoryName}', '${dish.name}', 'name', this.value)">
+                    <input type="text" value="${dish.price}" onchange="updateDish('${categoryName}', '${dish.name}', 'price', this.value)">
+                    <textarea onchange="updateDish('${categoryName}', '${dish.name}', 'description', this.value)">${dish.description || ''}</textarea>
+                    <input type="file" class="image-upload" accept="image/*" onchange="uploadImage(this, '${categoryName}', '${dish.name}')">
+                    <button onclick="this.previousElementSibling.click()">Cambiar Imagen</button>
+                </div>
+                <button class="remove" onclick="removeDish('${categoryName}', '${dish.name}')">Eliminar</button>
+            `;
+            return dishDiv;
+        }
+
+        function updateCategoryName(oldName, newName) {
+            if (oldName !== newName && !menu[newName]) {
+                menu[newName] = menu[oldName];
+                delete menu[oldName];
+                updateMenu();
+            }
+        }
+
+        function removeCategory(categoryName) {
+            if (confirm(`¿Estás seguro de que quieres eliminar la categoría "${categoryName}"?`)) {
+                delete menu[categoryName];
+                updateMenu();
+            }
+        }
+
+        function addDish(categoryName) {
+            const newDish = { 
+                name: "Nuevo Plato", 
+                price: "0.00€", 
+                description: "Descripción del plato", 
+                image: "/uploads/default-dish.jpg"
+            };
+            menu[categoryName].push(newDish);
+            updateMenu();
+        }
+
+        function updateDish(categoryName, dishName, property, value) {
+            const dish = menu[categoryName].find(d => d.name === dishName);
+            if (dish) {
+                dish[property] = value;
+                updateMenu();
+            }
+        }
+
+        function removeDish(categoryName, dishName) {
+            if (confirm(`¿Estás seguro de que quieres eliminar el plato "${dishName}"?`)) {
+                menu[categoryName] = menu[categoryName].filter(d => d.name !== dishName);
+                updateMenu();
+            }
+        }
+
+        function uploadImage(input, categoryName, dishName) {
+            console.log('Iniciando carga de imagen');
+            const file = input.files[0];
+            if (file) {
+                console.log('Archivo seleccionado:', file.name);
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    console.log('Imagen leída, preparando para enviar');
+                    const imageData = e.target.result;
+                    const dishElement = input.closest('.dish');
+                    dishElement.classList.add('loading');
+                    showStatus('Cargando imagen...', 'info');
+
+                    fetch('/upload', {
+                        method: 'POST',
+                        body: imageData
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error en la respuesta del servidor');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Respuesta del servidor:', data);
+                        updateDish(categoryName, dishName, 'image', data.url);
+                        dishElement.querySelector('img').src = data.url;
+                        showStatus('Imagen actualizada con éxito', 'success');
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showStatus('Error al cargar la imagen', 'error');
+                    })
+                    .finally(() => {
+                        dishElement.classList.remove('loading');
+                    });
+                };
+                reader.readAsDataURL(file);
+            } else {
+                console.log('No se seleccionó ningún archivo');
+            }
+        }
+
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = type;
+            statusMessage.style.display = 'block';
+            setTimeout(() => {
+                statusMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        addCategoryButton.onclick = function() {
+            const categoryName = prompt("Nombre de la nueva categoría:");
+            if (categoryName && !menu[categoryName]) {
+                menu[categoryName] = [];
+                updateMenu();
+            }
+        };
+
+        goToWaiterLoginButton.onclick = function() {
+            window.location.href = '/login';
+        };
+
+        function updateMenu() {
+            socket.send(JSON.stringify({ type: 'updateMenu', menu: menu }));
+        }
+
+        socket.onopen = function() {
+            console.log('Conexión WebSocket abierta');
+            socket.send(JSON.stringify({ type: 'getMenu' }));
+        };
+
+        socket.onerror = function(error) {
+            console.error('WebSocket Error:', error);
+            showStatus('Error de conexión', 'error');
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión - Camareros</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Inicio de Sesión - Camareros</h1>
+        <select id="waiterSelect">
+            <option value="">Selecciona un camarero</option>
+        </select>
+        <input type="text" id="newWaiterName" placeholder="Nombre del nuevo camarero">
+        <button id="addWaiter">Añadir Nuevo Camarero</button>
+        <button id="login">Iniciar Sesión</button>
+    </div>
+
+    <script>
+        const socket = new WebSocket(`ws://${window.location.hostname}:8080`);
+        const waiterSelect = document.getElementById('waiterSelect');
+        const newWaiterName = document.getElementById('newWaiterName');
+        const addWaiterButton = document.getElementById('addWaiter');
+        const loginButton = document.getElementById('login');
+
+        socket.onmessage = function(event) {
+            const message = JSON.parse(event.data);
+            if (message.type === 'waitersList') {
+                updateWaitersList(message.waiters);
+            }
+        };
+
+        socket.onopen = function() {
+            socket.send(JSON.stringify({ type: 'getWaiters' }));
+        };
+
+        function updateWaitersList(waiters) {
+            waiterSelect.innerHTML = '<option value="">Selecciona un camarero</option>';
+            waiters.forEach(waiter => {
+                const option = document.createElement('option');
+                option.value = waiter;
+                option.textContent = waiter;
+                waiterSelect.appendChild(option);
+            });
+        }
+
+        addWaiterButton.addEventListener('click', () => {
+            const newWaiter = newWaiterName.value.trim();
+            if (newWaiter) {
+                socket.send(JSON.stringify({ type: 'addWaiter', name: newWaiter }));
+                newWaiterName.value = '';
+            } else {
+                alert('Por favor, ingresa un nombre para el nuevo camarero.');
+            }
+        });
+
+        loginButton.addEventListener('click', () => {
+            const selectedWaiter = waiterSelect.value;
+            if (selectedWaiter) {
+                window.location.href = `/camarero?name=${encodeURIComponent(selectedWaiter)}`;
+            } else {
+                alert('Por favor, selecciona un camarero');
+            }
+        });
+    </script>
+</body>
+</html>
